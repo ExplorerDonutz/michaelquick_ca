@@ -1,0 +1,16 @@
+{
+  "name": "michaelquick_ca",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ExplorerDonutz <mwquick04@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^5.6.1",
+    "yarn": "^1.22.22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  }
+}
