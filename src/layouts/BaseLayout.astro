@@ -2,7 +2,7 @@
 import Header from "../components/TopNavigation.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-const { pageTitle } = Astro.props;
+const { pageTitle, showTitle } = Astro.props;
 ---
 
 <html data-theme="light" class="bg-primary" lang="en">
@@ -13,9 +13,9 @@ const { pageTitle } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{"Michael Quick | " + pageTitle}</title>
     </head>
-    <Header />
-    <body >
-        <h1>{pageTitle}</h1>
+    <body>
+        <Header />
+        {showTitle && <h1 class="text-3xl pl-10 pt-10">{pageTitle}</h1>}
         <slot />
         <Footer />
     </body>
