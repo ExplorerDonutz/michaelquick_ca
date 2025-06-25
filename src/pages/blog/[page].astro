@@ -1,0 +1,72 @@
+---
+// src/pages/blog/[page].astro
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost  from "../../components/BlogPost.astro";
+
+export async function getStaticPaths() {
+  // 1. Define POSTS_PER_PAGE here
+  const POSTS_PER_PAGE = 3;
+
+  // 2. Load & sort all posts
+  const modules = import.meta.glob("../../pages/posts/*.md", { eager: true });
+  const allPosts = Object.values(modules).sort(
+    (a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate)
+  );
+
+  // 3. Compute total pages & slice out each page’s posts
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  return Array.from({ length: totalPages }, (_, i) => {
+    const pageNum   = i + 1;
+    const start     = (i) * POSTS_PER_PAGE;
+    const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
+    return {
+      params: { page: String(pageNum) },
+      props:  { pageNum, totalPages, pagePosts }
+    };
+  });
+}
+
+// 4. Destructure your props (no more allPosts or POSTS_PER_PAGE here)
+const { pageNum, totalPages, pagePosts } = Astro.props;
+const pageTitle = `Blog (Page ${pageNum}/${totalPages})`;
+---
+
+<BaseLayout pageTitle={pageTitle} showTitle>
+  <!-- your intro... -->
+  <p class="max-w-prose pl-10 pt-6 pb-6">
+    Welcome to my blog! I decided that I wanted to try to make this to share my
+    thoughts and ideas whenever they come about. The focus will mostly be
+    computer science related, but I may talk about other things or about my
+    personal life as I see fit.
+  </p>
+
+  <div class="p-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {pagePosts.map(post => (
+      <BlogPost
+        url={post.url}
+        title={post.frontmatter.title}
+        date={post.frontmatter.pubDate}
+        description={post.frontmatter.description}
+      />
+    ))}
+  </div>
+
+  <!-- daisyUI Pagination (same as before) -->
+  <nav class="flex justify-center py-6">
+    <div class="join">
+      {pageNum > 1
+        ? <a href={`/blog/${pageNum - 1}`} class="btn join-item">«</a>
+        : <button class="btn join-item btn-disabled">«</button>}
+      {Array.from({ length: totalPages }).map((_, i) => {
+        const n = i + 1;
+        return n === pageNum
+          ? <button class="btn join-item btn-active">{n}</button>
+          : <a href={`/blog/${n}`} class="btn join-item">{n}</a>;
+      })}
+      {pageNum < totalPages
+        ? <a href={`/blog/${pageNum + 1}`} class="btn join-item">»</a>
+        : <button class="btn join-item btn-disabled">»</button>}
+    </div>
+  </nav>
+</BaseLayout>
