@@ -3,48 +3,59 @@ import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title} , showTitle={true}>
-    <div class="p-10">
-        <p><em>{frontmatter.description}</em></p>
-        <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+<BaseLayout pageTitle={frontmatter.title} showTitle={true}>
+    <div class="max-w-4xl mx-auto px-4 py-10">
+        <div class="card shadow-md bg-base-100 p-6 space-y-6">
+            <!-- Header -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold text-accent-content">
+                    {frontmatter.description}
+                </h3>
+                <div class="text-sm text-gray-400">
+                    <span>{frontmatter.pubDate.toString().slice(0, 10)}</span> ·
+                    <span
+                        >By <span class="font-medium">{frontmatter.author}</span
+                        ></span
+                    >
+                </div>
+            </div>
 
-        <p>Written by: {frontmatter.author}</p>
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-2">
+                {
+                    frontmatter.tags.map((tag: string) => (
+                        <a
+                            href={`/tags/${tag}`}
+                            class="badge badge-outline badge-primary hover:badge-accent text-accent-content"
+                        >
+                            #{tag}
+                        </a>
+                    ))
+                }
+            </div>
 
-        <img
-            src={frontmatter.image.url}
-            width="300"
-            alt={frontmatter.image.alt}
-        />
-
-        <div class="tags">
+            <!-- Image -->
             {
-                frontmatter.tags.map((tag: string) => (
-                    <p class="tag">
-                        <a href={`/tags/${tag}`}>{tag}</a>
-                    </p>
-                ))
+                frontmatter.image?.url && (
+                    <figure class="flex flex-col items-center gap-2">
+                        <img
+                            src={frontmatter.image.url}
+                            alt={frontmatter.image.alt || "Blog image"}
+                            class="w-full max-w-md rounded-xl shadow"
+                        />
+                        {frontmatter.image.title && (
+                            <figcaption class="text-center text-sm text-gray-400">
+                                {frontmatter.image.title}
+                            </figcaption>
+                        )}
+                    </figure>
+                )
             }
-        </div>
 
-        <slot />
+            <!-- Blog Content -->
+            <div class="prose prose-neutral dark:prose-invert max-w-none">
+                <slot />
+            </div>
+        </div>
     </div>
 </BaseLayout>
-<style>
-    a {
-        color: #00539f;
-    }
-
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .tag {
-        margin: 0.25em;
-        border: dotted 1px #a1a1a1;
-        border-radius: 0.5em;
-        padding: 0.5em 1em;
-        font-size: 1.15em;
-        background-color: #f8fcfd;
-    }
-</style>
