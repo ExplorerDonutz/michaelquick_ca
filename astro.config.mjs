@@ -6,9 +6,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 import icon from "astro-icon";
 
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [preact(), icon()],
+  integrations: [preact(), icon(), ],
   site: "https://michaelquick.ca",
 
   vite: {

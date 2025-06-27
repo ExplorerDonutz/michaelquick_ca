@@ -3,23 +3,23 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 
 export async function getStaticPaths() {
-    const allPosts = Object.values(
-        import.meta.glob("../posts/*.md", { eager: true }),
+  const allPosts = Object.values(
+    import.meta.glob("../posts/*.md", { eager: true }),
+  );
+
+  const uniqueTags = [
+    ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post: any) =>
+      post.frontmatter.tags.includes(tag),
     );
-
-    const uniqueTags = [
-        ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
-    ];
-
-    return uniqueTags.map((tag) => {
-        const filteredPosts = allPosts.filter((post: any) =>
-            post.frontmatter.tags.includes(tag),
-        );
-        return {
-            params: { tag },
-            props: { posts: filteredPosts },
-        };
-    });
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
@@ -27,12 +27,22 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-    <h1 class="text-5xl font-semibold p-10">Posts tagged with {tag}</h1>
-    <ul class="p-10">
-        {
-            posts.map((post: any) => (
-                <BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate} />
-            ))
-        }
-    </ul>
+  <!-- Title with responsive padding -->
+  <h1 class="text-3xl sm:text-4xl font-semibold px-4 sm:px-6 lg:px-10 pt-6 pb-4">
+    Posts tagged with <span class="text-accent-content">#{tag}</span>
+  </h1>
+
+  <!-- Blog Post Grid -->
+  <div class="px-4 sm:px-6 lg:px-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 pb-10">
+    {
+      posts.map((post: any) => (
+        <BlogPost
+          url={post.url}
+          title={post.frontmatter.title}
+          date={post.frontmatter.pubDate}
+          description={post.frontmatter.description}
+        />
+      ))
+    }
+  </div>
 </BaseLayout>
