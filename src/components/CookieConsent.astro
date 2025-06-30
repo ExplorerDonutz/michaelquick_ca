@@ -1,0 +1,13 @@
+---
+import 'vanilla-cookieconsent/dist/cookieconsent.css';
+import '../styles/cc.css';
+---
+
+<script>
+    import { run } from 'vanilla-cookieconsent';
+    import { config } from './CookieConsentConfig';
+
+    // toggle custom black theme
+    document.body.classList.add('cc');
+    run(config);
+</script>
