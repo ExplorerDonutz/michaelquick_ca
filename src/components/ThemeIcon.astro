@@ -2,14 +2,16 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<label class="swap swap-rotate">
+<label class="swap swap-rotate" aria-label="Theme controller">
   <!-- this hidden checkbox controls the state -->
   <input
     type="checkbox"
-    class="theme-controller"
+    class="theme-controller sr-only"
     id="theme-toggle"
     value="dark"
   />
+  <!-- actual text for screen-readers -->
+  <span class="sr-only">Toggle dark / light mode</span>
 
   <!-- sun icon -->
   <Icon
