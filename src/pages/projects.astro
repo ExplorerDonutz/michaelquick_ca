@@ -1,35 +1,40 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/global.css";
-import hero from "../images/hero.jpg";
-import { Image } from "astro:assets";
-const pageTitle = "Projects";
+
+const projects = [
+  {
+    name: "Auto Cover Letter",
+    description: "My team's entry into Dataquest 2025, which made the finals. The simple web app turns resume and job info into custom cover letters.",
+    url: "https://github.com/raginggoosedev/auto-cover-letter"
+  },
+  {
+    name: "Untitled Game - Final Project",
+    description: "LibGDX top down, dungeon hack and slash which I created with a friend as a final project.",
+    url: "https://github.com/your-username/another-repo"
+  },
+  {
+    name: "My Website",
+    description: "You're on it right now! I built this website from scratch using Astro, TailwindCSS, and DaisyUI!",
+    url: "https://github.com/ExplorerDonutz/michaelquick_ca"
+  }
+];
 ---
 
-<BaseLayout pageTitle={pageTitle} , showTitle={false}>
-  <div class="pl-10 pr-10">
-    <div class="hero min-h-screen">
-      <div class="hero-content flex-col lg:flex-row">
-        <Image
-          src={hero}
-          alt="Michael Quick in front of a model ship."
-          class="max-w-sm rounded-lg shadow-2xl"
-          loading={"eager"}
-        />
-        <div>
-          <h1 class="text-5xl font-bold">Hi There! I'm Michael Quick!</h1>
-          <p class="py-6">
-            I'm a undergraduate computer science student at the University of
-            Western Ontario, and this is my website!
-          </p>
-        </div>
-      </div>
+<BaseLayout pageTitle="Projects" showTitle>
+    <div class="w-full p-10 space-y-16">
+    <h2 class="text-3xl font-bold mb-6">My GitHub Projects</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card bg-base-100 shadow-md p-4 hover:shadow-lg transition-transform transform hover:-translate-y-1"
+        >
+          <h3 class="text-xl font-semibold">{project.name}</h3>
+          <p class="mt-2 text-gray-600">{project.description}</p>
+        </a>
+      ))}
     </div>
-    <section class="pb-10">
-      <h2 class="font-semibold text-5xl">About Me</h2>
-      <p class="py-6 max-w-prose">I'm a hard working student and developer who likes to create and build! I like to try many things, whether it be technology related, food, or activities. I made this website to showcase myself as a person and professionally!</p>
-
-      <h4>Feel free to check out more <a href="/about">about me</a>, have a look at my <a>blog</a>, or take a look at some of my <a>projects</a>!</h4>
-    </section>
   </div>
 </BaseLayout>

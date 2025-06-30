@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import Image from "astro/components/Image.astro";
 const { frontmatter } = Astro.props;
 ---
 
@@ -38,9 +39,12 @@ const { frontmatter } = Astro.props;
             {
                 frontmatter.image?.url && (
                     <figure class="flex flex-col items-center gap-2">
-                        <img
+                        <Image
                             src={frontmatter.image.url}
                             alt={frontmatter.image.alt || "Blog image"}
+                            loading={"eager"}
+                            width={frontmatter.image.width}
+                            height={frontmatter.image.height}
                             class="w-full max-w-md rounded-xl shadow"
                         />
                         {frontmatter.image.title && (

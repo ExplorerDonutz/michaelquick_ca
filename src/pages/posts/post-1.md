@@ -8,6 +8,8 @@ image:
     url: '/images/blog1.PNG'
     alt: 'Michael Quick, photoshopped to be 1st, 2nd, and 3rd place on a podium.'
     title: 'As you can see, I win first, second, and third place in blogging here.'
+    width: 1200
+    height: 800
 tags: ["personal", "learning", "casual"]
 ---
 

@@ -12,7 +12,7 @@ const pageTitle = "About";
     <div class="w-full p-10 space-y-16">
         <!-- Intro Section -->
         <section class="text-center space-y-4">
-            <h2 class="text-4xl font-bold text-accent-content">
+            <h2 class="text-4xl font-bold">
                 I'm Michael Quick!
             </h2>
             <p class="text-lg text-base-content">
@@ -23,30 +23,29 @@ const pageTitle = "About";
         <!-- Hobbies Section -->
         <section class="space-y-4">
             <h3 class="text-2xl font-semibold text-accent-content">
-                🎮 Hobbies & Interests
+                Hobbies & Interests
             </h3>
             <ul class="list-disc list-inside text-base-content space-y-2">
                 <li>
-                    🕹️ Building games and experimenting with game engines (like
-                    libGDX and SDL2)
+                    Building games and experimenting with game engines (like
+                    libGDX and Unity)
                 </li>
                 <li>
-                    🧠 Learning about machine learning and AI, especially for
-                    practical tools
+                    Learning about machine learning and AI, especially for
+                    practical tools and data analysis
                 </li>
                 <li>
-                    🏋️ Working out and exploring ways to improve strength and
-                    focus
+                    Working out with friends and pursuing my personal fitness goals
                 </li>
-                <li>📷 Photography and creating fun Photoshop edits</li>
-                <li>🧰 Modding 3D printers and optimizing hardware</li>
+                <li>Eating food. A lot of food. Every kind of food even!</li>
+                <li>3D printing and modifying 3D printers</li>
             </ul>
         </section>
 
         <!-- Image Section -->
         <section class="space-y-4">
             <h3 class="text-2xl font-semibold text-accent-content">
-                📸 A Few Highlights
+                A Few Highlights
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Image 1 -->
@@ -54,6 +53,7 @@ const pageTitle = "About";
                     <Image
                         src={printer}
                         alt="3D printer modded"
+                        loading={"eager"}
                         class="rounded-lg"
                     />
                     <figcaption class="mt-2 text-sm text-center text-gray-500">
@@ -93,20 +93,17 @@ const pageTitle = "About";
         <!-- Fun Facts -->
         <section class="space-y-4">
             <h3 class="text-2xl font-semibold text-accent-content">
-                🔍 Fun Facts
+                Fun Facts
             </h3>
             <ul class="list-disc list-inside text-base-content space-y-2">
                 <li>
-                    I run my own server with a custom website, database, and
-                    Minecraft instance.
+                    I run my own custom debian server, which I built. It hosts this website!
                 </li>
                 <li>
-                    I once spent hours troubleshooting a NeoPixel config… just
-                    to realize the wire was in the wrong GPIO pin.
+                    I despise brocolli. I simply can't eat it
                 </li>
                 <li>
-                    I enjoy making software that feels fast and efficient —
-                    minimal, but powerful.
+                    I love nature! I especially like being in forests or around trees! Mountains are also a favourite place to be!
                 </li>
             </ul>
         </section>
