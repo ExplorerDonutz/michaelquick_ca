@@ -6,11 +6,15 @@ import { Icon } from "astro-icon/components";
     class="flex flex-col sm:flex-row gap-8 justify-between items-start sm:items-center p-10 bg-base-200"
 >
     <!-- Brand -->
-    <aside class="flex flex-col justify-between h-full">
+    <aside class="flex flex-col items-start gap-2">
         <p class="font-semibold text-2xl flex items-center gap-2 pb-1">
             Michael Quick
         </p>
         <small>Copyright © 2025 - All rights reserved</small>
+
+        <button class="text-sm mt-1 hover:text-accent-content transition-colors" type="button" data-cc="show-preferencesModal"
+            >Customize cookie</button
+        >
     </aside>
 
     <!-- Socials -->
