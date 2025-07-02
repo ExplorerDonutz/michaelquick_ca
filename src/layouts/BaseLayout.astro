@@ -4,7 +4,11 @@ import Footer from "../components/Footer.astro";
 
 import CookieConsent from "../components/CookieConsent.astro";
 import "../styles/global.css";
-const { pageTitle, showTitle } = Astro.props;
+const { pageTitle, pageDescription, showTitle } = Astro.props;
+
+const defaultDescription = "Welcome to Michael Quick's portfolio and blog website. Michael is a computer science student at Western University.";
+
+const metaDescription = pageDescription ?? defaultDescription;
 ---
 
 <html data-theme="light" class="bg-primary" lang="en">
@@ -13,6 +17,7 @@ const { pageTitle, showTitle } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content={Astro.generator} />
+        <meta name="description" content={metaDescription} />
         <title>{"Michael Quick | " + pageTitle}</title>
 
         <!-- Google tag (gtag.js) -->
