@@ -1,5 +1,4 @@
 ---
-// src/pages/blog/[page].astro
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
@@ -28,13 +27,12 @@ export async function getStaticPaths() {
   });
 }
 
-// 4. Destructure your props (no more allPosts or POSTS_PER_PAGE here)
+// 4. Destructure your props
 const { pageNum, totalPages, pagePosts } = Astro.props;
 const pageTitle = `Blog (Page ${pageNum}/${totalPages})`;
 ---
 
 <BaseLayout pageTitle={pageTitle} showTitle>
-  <!-- your intro... -->
   <p class="max-w-prose px-4 sm:px-6 lg:px-10 pt-6 pb-6">
     Welcome to my blog! I decided that I wanted to try to make this to share my
     thoughts and ideas whenever they come about. The focus will mostly be
@@ -55,7 +53,6 @@ const pageTitle = `Blog (Page ${pageNum}/${totalPages})`;
     }
   </div>
 
-  <!-- daisyUI Pagination (same as before) -->
   <nav class="flex justify-center py-6">
     <div class="join">
       {
