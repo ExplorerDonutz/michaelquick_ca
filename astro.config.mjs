@@ -13,6 +13,7 @@ export default defineConfig({
   integrations: [preact(), icon(), shield({
     sri: {
       enableStatic: true,
+      enableMiddleware: true,
       scriptsAllowListUrls: [
         'https://www.googletagmanager.com'
       ]
