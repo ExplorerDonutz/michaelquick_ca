@@ -24,7 +24,7 @@ export default defineConfig({
         "connect-src 'self' https://www.googletagmanager.com;",
         "img-src 'self' data:;",
         "font-src 'self' data:;",
-        "style-src   'self' 'sha256-STYLE_HASH' 'sha384-STYLE_HASH' 'sha512-STYLE_HASH';",
+        "style-src 'self' 'sha256-STYLE_HASH' 'sha384-STYLE_HASH' 'sha512-STYLE_HASH';",
       ],
       styleDirective: {
         hashes: [
