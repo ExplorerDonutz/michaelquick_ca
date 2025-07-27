@@ -20,7 +20,7 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "connect-src 'self' https://www.googletagmanager.com;",
+        "connect-src 'self' https://www.googletagmanager.com",
       ],
       styleDirective: {
         resources: [
