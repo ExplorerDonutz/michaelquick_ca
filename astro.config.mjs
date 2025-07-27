@@ -10,7 +10,7 @@ import shield from '@kindspells/astro-shield';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [preact(), icon(),shield({
+  integrations: [preact(), icon(), shield({
     sri: {
       enableStatic: true
     }
@@ -20,6 +20,11 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
+        "script-src  'self' https://www.googletagmanager.com;",
+        "connect-src 'self' https://www.googletagmanager.com;",
+        "img-src 'self' data:;",
+        "font-src 'self' data:;",
+        "style-src   'self' 'sha256-STYLE_HASH' 'sha384-STYLE_HASH' 'sha512-STYLE_HASH';",
       ],
       styleDirective: {
         hashes: [
