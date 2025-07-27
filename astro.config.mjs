@@ -20,24 +20,17 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "script-src  'self' https://www.googletagmanager.com;",
         "connect-src 'self' https://www.googletagmanager.com;",
-        "img-src 'self' data:;",
-        "font-src 'self' data:;",
-        "style-src 'self' 'sha256-STYLE_HASH' 'sha384-STYLE_HASH' 'sha512-STYLE_HASH';",
       ],
       styleDirective: {
-        hashes: [
-          "sha384-styleHash",
-          "sha512-styleHash",
-          "sha256-styleHash"
+        resources: [
+          "'self'",
         ]
       },
       scriptDirective: {
-        hashes: [
-          "sha384-scriptHash",
-          "sha512-scriptHash",
-          "sha256-scriptHash"
+        resources: [
+          "https://www.googletagmanager.com",
+          "'self'",
         ]
       }
 
