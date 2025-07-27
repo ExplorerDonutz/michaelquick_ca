@@ -12,11 +12,7 @@ import shield from '@kindspells/astro-shield';
 export default defineConfig({
   integrations: [preact(), icon(), shield({
     sri: {
-      enableStatic: true,
-      enableMiddleware: true,
-      scriptsAllowListUrls: [
-        'https://www.googletagmanager.com'
-      ]
+      enableStatic: true
     }
   })],
 
