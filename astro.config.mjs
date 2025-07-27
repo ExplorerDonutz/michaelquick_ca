@@ -12,7 +12,10 @@ import shield from '@kindspells/astro-shield';
 export default defineConfig({
   integrations: [preact(), icon(), shield({
     sri: {
-      enableStatic: true
+      enableStatic: true,
+      scriptsAllowListUrls: [
+        'https://www.googletagmanager.com'
+      ]
     }
   })],
 
@@ -20,7 +23,7 @@ export default defineConfig({
     csp: {
       directives: [
         "default-src 'self'",
-        "connect-src 'self' https://www.googletagmanager.com",
+        "connect-src 'self'",
       ],
       styleDirective: {
         resources: [
@@ -29,7 +32,6 @@ export default defineConfig({
       },
       scriptDirective: {
         resources: [
-          "https://www.googletagmanager.com",
           "'self'",
         ]
       }
