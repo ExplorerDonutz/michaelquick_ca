@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-
+import { resolve } from 'node:path'
 import preact from '@astrojs/preact';
 
 import tailwindcss from "@tailwindcss/vite";
@@ -11,11 +11,11 @@ import shield from '@kindspells/astro-shield';
 // https://astro.build/config
 export default defineConfig({
   integrations: [preact(), icon(), shield({
-    sri: true,
-
-    headers: {
-      'content-security-policy':
-        "default-src 'self'; frame-ancestors 'self';"
+    sri: {
+      enableStatic: true
+    },
+    cspDirectives: {
+      'default-src': "'none'",
     }
   }),],
 
