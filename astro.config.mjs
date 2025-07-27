@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import { resolve } from 'node:path'
+
 import preact from '@astrojs/preact';
 
 import tailwindcss from "@tailwindcss/vite";
@@ -10,21 +10,42 @@ import shield from '@kindspells/astro-shield';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [preact(), icon(), shield({
+  integrations: [preact(), icon(),shield({
     sri: {
       enableStatic: true
-    },
-    cspDirectives: {
-      'default-src': "'none'",
     }
-  }),],
+  })],
 
+  experimental: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+      ],
+      styleDirective: {
+        hashes: [
+          "sha384-styleHash",
+          "sha512-styleHash",
+          "sha256-styleHash"
+        ]
+      },
+      scriptDirective: {
+        hashes: [
+          "sha384-scriptHash",
+          "sha512-scriptHash",
+          "sha256-scriptHash"
+        ]
+      }
+
+
+    }
+  },
 
   site: "https://michaelquick.ca",
 
   vite: {
     plugins: [
       tailwindcss(),
+      sri()
     ],
   },
   redirects: {
