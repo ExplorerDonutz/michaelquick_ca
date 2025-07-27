@@ -789,6 +789,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kindspells/astro-shield@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@kindspells/astro-shield/-/astro-shield-1.7.1.tgz#f1b04921fab792cd3f46e8388e98c860d8f27bb9"
+  integrity sha512-8M6rbXNp1v7CbwIjDXJzlgnPuYHmqTLGAiiMK738AhYE191uWGi6mzEhQEW9U4agDzi6Cq6+WFjJ/ZavYDz4pg==
+
 "@oslojs/encoding@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@oslojs/encoding/-/encoding-1.1.0.tgz#55f3d9a597430a01f2a5ef63c6b42f769f9ce34e"
