@@ -1,6 +1,7 @@
 # This would be a rather unfortunate mistake!
 *.env
 
+src/images
 node_modules/
 dist/
 *.tsbuildinfo
