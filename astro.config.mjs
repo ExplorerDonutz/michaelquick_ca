@@ -19,6 +19,7 @@ export default defineConfig({
   experimental: {
     csp: {
       directives: [
+        "object-src 'none'",
         "default-src 'self'",
         "connect-src 'self'",
       ],

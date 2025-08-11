@@ -1,33 +1,42 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+const pageTitle = "Projects";
 
 const projects = [
   {
+    name: "Tractor GPS Auto Steer",
+    description: "Universal auto-steering solutions for tractors that utilized open-source tools with hardware sensors and GPS.",
+    url: "/tractor",
+  },
+  {
     name: "Auto Cover Letter",
     description: "My team's entry into Dataquest 2025, which made the finals. The simple web app turns resume and job info into custom cover letters.",
-    url: "https://github.com/raginggoosedev/auto-cover-letter"
+    url: "https://github.com/raginggoosedev/auto-cover-letter",
   },
   {
     name: "Untitled Game - Final Project",
     description: "LibGDX top down, dungeon hack and slash which I created with a friend as a final project.",
-    url: "https://github.com/ExplorerDonutz/final-project"
+    url: "https://github.com/ExplorerDonutz/final-project",
   },
   {
     name: "My Website",
     description: "You're on it right now! I built this website from scratch using Astro, TailwindCSS, and DaisyUI!",
-    url: "https://github.com/ExplorerDonutz/michaelquick_ca"
+    url: "https://github.com/ExplorerDonutz/michaelquick_ca",
   }
 ];
+
+const isExternal = (href: string) => /^https?:\/\//.test(href);
 ---
 
-<BaseLayout pageTitle="Projects" showTitle>
+<BaseLayout pageTitle={pageTitle} showTitle>
     <div class="w-full p-10 space-y-16">
     <h2 class="text-3xl font-bold mb-6">My GitHub Projects</h2>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
         <a
           href={project.url}
-          target="_blank"
+          target={isExternal(project.url) ? "_blank" : "_self"}
           rel="noopener noreferrer"
           class="card bg-base-100 shadow-md p-4 hover:shadow-lg transition-transform transform hover:-translate-y-1"
         >

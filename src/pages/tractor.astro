@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+const pageTitle = "Auto-Steer Tractor Project";
+import printer from "../images/auto1.jpg";
+import { Image } from "astro:assets";
+---
+
+<BaseLayout pageTitle={pageTitle} showTitle>
+    <div class="w-full p-10 space-y-16">
+        <p class="max-w-prose">
+            Initially this was a request given to me from my employer at Hyland
+            Farms. After doing some research I turned this into a full personal
+            project, putting in hours of research into the requirements of the
+            hardware and software needed to steer a tractor. From this project I
+            was able to get experience with open-sourced tools such as
+            AGOpenGPS, and hardware including GPS, sensors, and motors.
+        </p>
+
+        <section class="space-y-4 max-w-prose">
+            <h2 class="text-2xl font-semibold text-accent-content">
+                The Problem
+            </h2>
+            <p>
+                Field work is can be perceived as relatively simple work that
+                takes minimal effort. This is not the case for many reasons:
+            </p>
+
+            <ul class="list-disc list-inside text-base-content space-y-2">
+                <li>
+                    Inexperienced drivers may struggle to maintain a steady
+                    line.
+                </li>
+                <li>
+                    Rocks, rough fields, fatiue, and distractions can cause even
+                    the best drivers to lose their line.
+                </li>
+                <li>
+                    Making smooth turns in large tractors with large implements
+                    on uneven ground is difficult for anyone.
+                </li>
+            </ul>
+        </section>
+
+        <section class="space-y-4 max-w-prose">
+            <h2 class="text-2xl font-semibold text-accent-content">
+                What Solutions Exist on the Market?
+            </h2>
+
+            <p>
+                The most commercially available solutions come from tractor
+                manufacturers and distributors. These auto-steering solutions
+                are often designed to fit specific tractors, even lacking
+                compatiblity between different years or models from the same
+                company. Additionally, there is a large cost associated with
+                these devices and the installation. For my employer, these
+                challenges made auto-steer seem undesirable, resulting in the
+                decision to continue with manual steering.
+            </p>
+        </section>
+
+        <section class="space-y-4 max-w-prose">
+            <h2 class="text-2xl font-semibold text-accent-content">
+                What did I create?
+            </h2>
+            <p>
+                I created two solutions, but both follow the same premise: to be
+                safe, affordable, and universal. I built these with the help of
+                the work done by the AGOpenGPS community and their tools.
+                AGOpenGPS is an open-source platform for precision agriculture,
+                helping farmers to use GPS-based auto-steer using
+                readily-available components for affordable pricing.
+            </p>
+            <p>
+                From their documentation as well as my own research I was able
+                to piece together the components needed. I opted for a single
+                GPS setup with an IMU to handle pitch and roll with the
+                precision required to manuever a field accurately. Additionally,
+                mechanical switches to enable or disable steering, wheel angle
+                sensors, and the ability to use either over-steering-wheel
+                motors or hydraulic valves were integrated into the system I
+                built.
+            </p>
+        </section>
+
+        <section class="space-y-4 max-w-prose">
+            <h2 class="text-2xl font-semibold text-accent-content">
+                The Results
+            </h2>
+            <p>
+                I built two systems for two different tractors, both from Case.
+                One used an EZ-Steer over-steering-wheel motor which my employer
+                had previously purchased. The other had an existing hydraulic
+                valve system and wheel angle sensors, but lacked an auto-steer
+                solution. Both systems were installed and after troubleshooting
+                and testing, were ready for field-use. I am overall very proud
+                and excited at the thought of my work being used in the field!
+            </p>
+        </section>
+
+        <!-- Image Section -->
+        <section class="space-y-4">
+            <h3 class="text-2xl font-semibold text-accent-content">
+                A Few Highlights
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <figure class="card bg-base-200 shadow-md p-4">
+                    <Image
+                        src={printer}
+                        alt="3D printer modded"
+                        loading={"lazy"}
+                        class="rounded-lg max-h-2/3"
+                    />
+                    <figcaption class="mt-2 text-sm text-center text-gray-500">
+                        A top-down view of the All-In-One board while it is running.
+                    </figcaption>
+                </figure>
+
+                <!-- Video 2 -->
+                <figure class="card bg-base-200 shadow-md p-4">
+                    <video controls class="max-h-2/3 rounded-lg">
+                        <source src="../images/auto2.mp4" type="video/mp4" />
+                    </video>
+                    <figcaption class="mt-2 text-sm text-center text-gray-500">
+                        Performing a mapped AB line and a u-turn in a field.
+                    </figcaption>
+                </figure>
+
+                <!-- Video 3 -->
+                <figure class="card bg-base-200 shadow-md p-4">
+                    <video controls class="max-h-2/3 rounded-lg">
+                        <source src="../images/auto3.mp4" type="video/mp4" />
+                    </video>
+                    <figcaption class="mt-2 text-sm text-center text-gray-500">
+                        The tractor follow a mapped test track entirely on its own with the EZ-Steer motor.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    </div>
+</BaseLayout>
